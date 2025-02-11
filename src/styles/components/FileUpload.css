@@ -1,0 +1,98 @@
+.file-upload {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  font-family: var(--font-sans);
+}
+
+.dropzone {
+  border: 2px dashed var(--brand-primary);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  background: var(--brand-background);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.dropzone.active {
+  border-color: var(--brand-accent);
+  background: rgba(var(--brand-accent-rgb), 0.1);
+}
+
+.dropzone-content {
+  color: var(--brand-text);
+}
+
+.file-types,
+.file-size {
+  font-size: 0.9em;
+  color: var(--brand-text-secondary);
+  margin: 5px 0;
+}
+
+.file-list {
+  margin-top: 20px;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin: 5px 0;
+  background: var(--brand-background-secondary);
+  border-radius: 4px;
+  gap: 10px;
+}
+
+.file-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-progress {
+  width: 100px;
+  height: 4px;
+  background: var(--brand-background);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: var(--brand-accent);
+  transition: width 0.3s ease;
+}
+
+.remove-file {
+  background: none;
+  border: none;
+  color: var(--brand-text-secondary);
+  cursor: pointer;
+  font-size: 1.2em;
+  padding: 0 5px;
+  transition: color 0.2s ease;
+}
+
+.remove-file:hover {
+  color: var(--brand-error);
+}
+
+.error-list {
+  margin-top: 20px;
+}
+
+.error-item {
+  padding: 10px;
+  margin: 5px 0;
+  background: var(--color-error-bg);
+  border-radius: 4px;
+  color: var(--color-error);
+}
+
+.error-message {
+  margin-left: 10px;
+  font-size: 0.9em;
+}
