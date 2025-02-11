@@ -1,0 +1,122 @@
+.kokoro-app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--brand-background);
+  color: var(--brand-text);
+}
+
+.app-header {
+  padding: 1rem 2rem;
+  background: var(--brand-background-secondary);
+  border-bottom: 1px solid var(--brand-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--brand-text);
+}
+
+.runtime-info {
+  padding: 0.5rem 1rem;
+  background: var(--brand-accent);
+  color: var(--brand-text-inverse);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.app-content {
+  flex: 1;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2rem;
+  position: relative;
+}
+
+.upload-section {
+  background: var(--brand-background-secondary);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.editor-section {
+  background: var(--brand-background-secondary);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.processing-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  backdrop-filter: blur(4px);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--brand-accent);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.app-footer {
+  padding: 1rem 2rem;
+  background: var(--brand-background-secondary);
+  border-top: 1px solid var(--brand-border);
+}
+
+.metrics {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+  font-size: 0.9rem;
+  color: var(--brand-text-secondary);
+}
+
+/* Theme-specific styles */
+.theme-glass .app-header,
+.theme-glass .app-footer {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.theme-glass .upload-section,
+.theme-glass .editor-section {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .app-content {
+    grid-template-columns: 1fr;
+  }
+
+  .metrics {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+}
