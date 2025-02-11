@@ -14,7 +14,14 @@ kokoro-webgpu/
 ├── models/             # Model files and manifests
 ├── voices/             # Voice packs
 ├── scripts/            # Build and utility scripts
-└── docs/              # Documentation
+├── docs/              # Project documentation
+│   ├── CONVENTIONS.md  # Project conventions
+│   ├── DIAGRAMS.md    # Architecture diagrams
+│   ├── IDEOLOGIES.md  # Project philosophy
+│   ├── TODO.md        # Development roadmap
+│   ├── CHANGELOG.md   # Version history
+│   └── *.md           # Additional documentation
+└── README.md         # Project overview
 ```
 
 ### 2. Naming Conventions
