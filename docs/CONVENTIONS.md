@@ -120,6 +120,19 @@ Types:
 5. Release notes
 6. Deployment
 
+## Version Control Standards
+- Branch naming: 
+  - `master`: Stable release branch
+  - `wscribe`: Active development branch
+  - Feature branches: `feature/<name>`
+  - Bugfix branches: `fix/<issue-number>`
+- Commit messages: Follow conventional commits format
+  ```
+  <type>(<scope>): <subject>
+  ```
+  Example: `feat(audio): implement streaming buffer`
+- Version tags: Follow semantic versioning (MAJOR.MINOR.PATCH)
+
 ## Mobile Considerations (Future)
 
 ### 1. ONNX Implementation
