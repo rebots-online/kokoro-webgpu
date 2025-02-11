@@ -1,0 +1,82 @@
+{
+  "model_version": "v0.19",
+  "model_hash": "3b0c392f87508da38fad3a2f9d94c359f1b657ebd2ef79f9d56d69503e470b0a",
+  "base_model": {
+    "name": "kokoro-v0_19.pth",
+    "url": "https://huggingface.co/hexgrad/Kokoro-82M/resolve/main/kokoro-v0_19.pth"
+  },
+  "voices": {
+    "american": {
+      "af": {
+        "name": "af.pt",
+        "description": "Default voice (50-50 mix of Bella & Sarah)",
+        "url": "https://huggingface.co/hexgrad/Kokoro-82M/resolve/main/voices/af.pt"
+      },
+      "af_bella": {
+        "name": "af_bella.pt",
+        "description": "Bella (American Female)",
+        "url": "https://huggingface.co/hexgrad/Kokoro-82M/resolve/main/voices/af_bella.pt"
+      },
+      "af_sarah": {
+        "name": "af_sarah.pt",
+        "description": "Sarah (American Female)",
+        "url": "https://huggingface.co/hexgrad/Kokoro-82M/resolve/main/voices/af_sarah.pt"
+      },
+      "am_adam": {
+        "name": "am_adam.pt",
+        "description": "Adam (American Male)",
+        "url": "https://huggingface.co/hexgrad/Kokoro-82M/resolve/main/voices/am_adam.pt"
+      },
+      "am_michael": {
+        "name": "am_michael.pt",
+        "description": "Michael (American Male)",
+        "url": "https://huggingface.co/hexgrad/Kokoro-82M/resolve/main/voices/am_michael.pt"
+      },
+      "af_nicole": {
+        "name": "af_nicole.pt",
+        "description": "Nicole (American Female)",
+        "url": "https://huggingface.co/hexgrad/Kokoro-82M/resolve/main/voices/af_nicole.pt"
+      },
+      "af_sky": {
+        "name": "af_sky.pt",
+        "description": "Sky (American Female)",
+        "url": "https://huggingface.co/hexgrad/Kokoro-82M/resolve/main/voices/af_sky.pt"
+      }
+    },
+    "british": {
+      "bf_emma": {
+        "name": "bf_emma.pt",
+        "description": "Emma (British Female)",
+        "url": "https://huggingface.co/hexgrad/Kokoro-82M/resolve/main/voices/bf_emma.pt"
+      },
+      "bf_isabella": {
+        "name": "bf_isabella.pt",
+        "description": "Isabella (British Female)",
+        "url": "https://huggingface.co/hexgrad/Kokoro-82M/resolve/main/voices/bf_isabella.pt"
+      },
+      "bm_george": {
+        "name": "bm_george.pt",
+        "description": "George (British Male)",
+        "url": "https://huggingface.co/hexgrad/Kokoro-82M/resolve/main/voices/bm_george.pt"
+      },
+      "bm_lewis": {
+        "name": "bm_lewis.pt",
+        "description": "Lewis (British Male)",
+        "url": "https://huggingface.co/hexgrad/Kokoro-82M/resolve/main/voices/bm_lewis.pt"
+      }
+    }
+  },
+  "onnx": {
+    "version": "v0.19 ebef4245",
+    "files": {
+      "model": {
+        "name": "model.onnx",
+        "url": "https://huggingface.co/onnx-community/Kokoro-82M-ONNX/resolve/main/model.onnx"
+      },
+      "config": {
+        "name": "config.json",
+        "url": "https://huggingface.co/onnx-community/Kokoro-82M-ONNX/resolve/main/config.json"
+      }
+    }
+  }
+}

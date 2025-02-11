@@ -1,0 +1,70 @@
+:root {
+  /* Brand Colors */
+  --brand-primary: #0066CC;
+  --brand-secondary: #1A1A2E;
+  --brand-accent: #3399FF;
+  --brand-trim: #FFD700;
+  --brand-background: #F5F5F5;
+  --brand-text: #333333;
+
+  /* Theme Variants */
+  --theme-brutalist-primary: var(--brand-primary);
+  --theme-brutalist-secondary: var(--brand-secondary);
+  --theme-brutalist-accent: var(--brand-accent);
+  
+  --theme-skeuomorphic-primary: var(--brand-primary);
+  --theme-skeuomorphic-secondary: var(--brand-secondary);
+  --theme-skeuomorphic-accent: var(--brand-accent);
+  
+  --theme-glassmorphic-primary: rgba(0, 102, 204, 0.8);
+  --theme-glassmorphic-secondary: rgba(26, 26, 46, 0.8);
+  --theme-glassmorphic-accent: rgba(51, 153, 255, 0.8);
+  
+  --theme-retro-primary: #0088FF;
+  --theme-retro-secondary: #000066;
+  --theme-retro-accent: #00CCFF;
+
+  /* Dark Mode Variants */
+  .dark-mode {
+    --brand-background: #1A1A2E;
+    --brand-text: #F5F5F5;
+    --brand-primary: #3399FF;
+    --brand-secondary: #0066CC;
+    --brand-accent: #FFD700;
+  }
+
+  /* Light Mode Variants */
+  .light-mode {
+    --brand-background: #F5F5F5;
+    --brand-text: #333333;
+    --brand-primary: #0066CC;
+    --brand-secondary: #1A1A2E;
+    --brand-accent: #3399FF;
+  }
+}
+
+/* Theme Base Classes */
+.theme-brutalist {
+  font-family: 'Inter', sans-serif;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.theme-skeuomorphic {
+  font-family: 'SF Pro Display', 'Inter', sans-serif;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.theme-glassmorphic {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.1);
+  border-radius: 16px;
+}
+
+.theme-retro {
+  font-family: 'VT323', 'Courier New', monospace;
+  border: 2px solid;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+}

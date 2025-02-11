@@ -1,0 +1,108 @@
+.notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+  font-family: var(--font-sans);
+}
+
+.notification {
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: slide-in 0.3s ease-out;
+  background: var(--brand-background);
+  border: 1px solid;
+}
+
+.notification-warning {
+  border-color: var(--color-warning);
+  background-color: var(--color-warning-bg);
+}
+
+.notification-error {
+  border-color: var(--color-error);
+  background-color: var(--color-error-bg);
+}
+
+.notification-info {
+  border-color: var(--color-info);
+  background-color: var(--color-info-bg);
+}
+
+.notification-success {
+  border-color: var(--color-success);
+  background-color: var(--color-success-bg);
+}
+
+.notification-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.notification-header h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.notification-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  color: var(--brand-text);
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.notification-close:hover {
+  opacity: 1;
+}
+
+.notification-body {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--brand-text);
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Color Variables */
+:root {
+  --color-warning: #f0b429;
+  --color-warning-bg: rgba(240, 180, 41, 0.1);
+  --color-error: #e12d39;
+  --color-error-bg: rgba(225, 45, 57, 0.1);
+  --color-info: #3f88c5;
+  --color-info-bg: rgba(63, 136, 197, 0.1);
+  --color-success: #2b9348;
+  --color-success-bg: rgba(43, 147, 72, 0.1);
+}
