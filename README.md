@@ -28,14 +28,63 @@ Kokoro WebGPU brings high-performance text-to-speech capabilities directly to mo
 
 ### Key Features
 
-- WebGPU acceleration for optimal performance
-- Automatic CPU fallback with user notification
-- Real-time streaming audio generation
-- WScribe editor integration
-- Multiple input format support (TXT, SRT, VTT)
-- Voice selection and customization
-- Browser-based processing
-- Future Android compatibility via ONNX
+- ✅ WebGPU acceleration for optimal performance
+  - Compute shader-based audio processing
+  - Model optimization and quantization
+  - Real-time performance metrics
+- ✅ Automatic CPU fallback with user notification
+  - Graceful degradation to WebAssembly
+  - Performance comparison analytics
+- ✅ Real-time streaming audio generation
+  - Chunk-based processing
+  - Adaptive buffer management
+  - Low-latency playback
+- ✅ WScribe editor integration
+  - Real-time text segmentation
+  - Audio-text synchronization
+  - Multi-format support
+- ✅ Multiple input format support
+  - TXT with smart segmentation
+  - SRT with timing preservation
+  - VTT with styling support
+- ✅ Voice selection and customization
+  - Emotion control
+  - Speed adjustment
+  - Pitch modification
+- ✅ Browser-based processing
+  - WebGPU compute pipelines
+  - WebAssembly acceleration
+  - Web Audio API integration
+- ✅ ONNX Runtime integration
+  - WebGL/WASM execution providers
+  - Model optimization
+  - Dynamic provider selection
+
+### Advanced Features
+
+#### WebGPU Acceleration
+- Custom WGSL shaders for audio processing
+- Parallel compute workgroups
+- Shared memory optimizations
+- Automatic workgroup size tuning
+
+#### Model Management
+- LRU cache with size constraints
+- Preloading and warmup
+- INT8/FP16 quantization
+- Pruning support
+
+#### Audio Pipeline
+- Streaming architecture
+- Real-time effects
+- Format conversion
+- Buffer management
+
+#### Performance Optimization
+- Adaptive chunk sizing
+- Memory pooling
+- Pipeline parallelization
+- Latency monitoring
 
 ## Getting Started
 
