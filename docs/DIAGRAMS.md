@@ -4,51 +4,32 @@
 
 ```mermaid
 graph TB
-    subgraph Frontend["Frontend Interface"]
-        UI[UI Components]
-        ThemeManager[Theme Manager]
-        subgraph InputSection["Input Section"]
-            FileUpload[File Upload Component]
-            TextArea[Text Area Input]
-            FileParser[File Parser]
-        end
-        subgraph VoiceSection["Voice Configuration"]
-            VoiceSelector[Voice Selector]
-            ModelParams[Model Parameters]
-        end
-        subgraph Editor["WScribe Editor Integration"]
-            WScribeEditor[WScribe Editor Component]
-            Timeline[Timeline View]
-            WordEditor[Word-Level Editor]
-        end
-        subgraph AudioControl["Audio Control"]
-            Player[Audio Player]
-            ExportTools[Export Tools]
-        end
+    subgraph UI["User Interface"]
+        Upload["File Upload"]
+        WScribe["WScribe Editor"]
+        Controls["Playback Controls"]
     end
 
-    subgraph Backend["Backend Services"]
-        KokoroTTS[Kokoro TTS Engine]
-        BackgroundRenderer[Background Renderer Service]
-        FileProcessor[File Processing Service]
-        ExportService[Export Service]
+    subgraph Core["Core Processing"]
+        Parser["Text Parser"]
+        AudioProc["Audio Processor"]
+        ModelMgr["Model Manager"]
     end
 
-    subgraph Storage["State Management"]
-        AppState[Application State]
-        AudioCache[Audio Cache]
-        EditorState[Editor State]
+    subgraph Runtime["Runtime Systems"]
+        WebGPU["WebGPU Pipeline"]
+        ONNX["ONNX Runtime"]
+        WebAudio["Web Audio API"]
     end
 
-    FileUpload --> FileProcessor
-    TextArea --> KokoroTTS
-    FileProcessor --> KokoroTTS
-    KokoroTTS --> BackgroundRenderer
-    BackgroundRenderer --> AudioCache
-    AudioCache --> WScribeEditor
-    WScribeEditor --> ExportService
-    VoiceSelector --> KokoroTTS
-    ThemeManager --> UI
+    Upload --> Parser
+    Parser --> WScribe
+    WScribe --> AudioProc
+    Controls --> WebAudio
+    AudioProc --> WebGPU
+    ModelMgr --> ONNX
+    WebGPU --> WebAudio
+    ONNX --> AudioProc
 ```
 
 ## Implementation Checklist
@@ -136,44 +117,160 @@ Last Updated: 2025-02-11T06:38:00-05:00
 
 ## Technical Specifications
 
-### File Format Support
+### Audio Pipeline
 ```mermaid
 graph LR
-    Input[Input Files] --> Parser[File Parser]
-    Parser --> |Plain Text| TTS[TTS Engine]
-    Parser --> |Timed Text| TimingExtractor[Timing Extractor]
-    TimingExtractor --> ProsodyAdjuster[Prosody Adjuster]
-    ProsodyAdjuster --> TTS
+    subgraph Input["Input Processing"]
+        Text["Text Input"]
+        Parser["Text Parser"]
+        Segments["Text Segments"]
+    end
+
+    subgraph Processing["Audio Processing"]
+        Model["TTS Model"]
+        GPU["WebGPU Compute"]
+        Effects["Audio Effects"]
+    end
+
+    subgraph Output["Audio Output"]
+        Buffer["Audio Buffer"]
+        Player["Web Audio Player"]
+        Stream["Audio Stream"]
+    end
+
+    Text --> Parser
+    Parser --> Segments
+    Segments --> Model
+    Model --> GPU
+    GPU --> Effects
+    Effects --> Buffer
+    Buffer --> Player
+    Player --> Stream
 ```
 
-### Background Rendering System
-```mermaid
-sequenceDiagram
-    participant Editor
-    participant Cache
-    participant TTS
-    participant AudioProcessor
-
-    Editor->>TTS: Request Render
-    TTS->>Cache: Check Cache
-    Cache-->>TTS: Cache Miss
-    TTS->>AudioProcessor: Process Chunk
-    AudioProcessor->>Cache: Store Result
-    Cache-->>Editor: Return Audio
-    Note over Editor,Cache: Continuous Background Updates
-```
-
-### Export Pipeline
+### Model Management
 ```mermaid
 graph TB
-    Editor[Editor] --> ExportManager[Export Manager]
-    ExportManager --> |Audio| AudioExport[Audio Export]
-    ExportManager --> |Video| VideoExport[Video Export]
-    AudioExport --> |WAV| WAVOutput[WAV File]
-    AudioExport --> |M4A| M4AOutput[M4A File]
-    AudioExport --> |MP3| MP3Output[MP3 File]
-    VideoExport --> FFmpeg[FFmpeg Processing]
-    FFmpeg --> FinalVideo[Synced Video]
+    subgraph Cache["Cache Management"]
+        LRU["LRU Cache"]
+        Preload["Model Preloader"]
+        Verify["Checksum Verifier"]
+    end
+
+    subgraph Runtime["Runtime Selection"]
+        WebGL["WebGL Provider"]
+        WASM["WASM Provider"]
+        Fallback["Fallback Handler"]
+    end
+
+    subgraph Optimization["Model Optimization"]
+        Quant["Quantization"]
+        Prune["Pruning"]
+        Pipeline["Pipeline Optimizer"]
+    end
+
+    LRU --> WebGL
+    LRU --> WASM
+    Preload --> LRU
+    Verify --> LRU
+    WebGL --> Pipeline
+    WASM --> Fallback
+    Pipeline --> Quant
+    Pipeline --> Prune
+```
+
+### Memory Management
+```mermaid
+graph TB
+    subgraph Resources["Resource Management"]
+        Pool["Memory Pool"]
+        Allocator["Buffer Allocator"]
+        GC["Garbage Collector"]
+    end
+
+    subgraph Buffers["Buffer Management"]
+        Input["Input Buffers"]
+        Process["Processing Buffers"]
+        Output["Output Buffers"]
+    end
+
+    subgraph Optimization["Optimization"]
+        Recycle["Buffer Recycling"]
+        Compress["Compression"]
+        Monitor["Usage Monitor"]
+    end
+
+    Pool --> Allocator
+    Allocator --> Input
+    Allocator --> Process
+    Allocator --> Output
+    GC --> Pool
+    Input --> Recycle
+    Process --> Recycle
+    Output --> Recycle
+    Recycle --> Pool
+    Monitor --> Compress
+    Compress --> Pool
+```
+
+### Error Handling
+```mermaid
+graph TB
+    subgraph Detection["Error Detection"]
+        GPU["GPU Errors"]
+        Memory["Memory Errors"]
+        Runtime["Runtime Errors"]
+    end
+
+    subgraph Recovery["Error Recovery"]
+        Fallback["Fallback Paths"]
+        Restore["State Restoration"]
+        Notify["User Notification"]
+    end
+
+    subgraph Prevention["Error Prevention"]
+        Validate["Input Validation"]
+        Monitor["Resource Monitor"]
+        Bounds["Error Boundaries"]
+    end
+
+    GPU --> Fallback
+    Memory --> Restore
+    Runtime --> Notify
+    Validate --> Bounds
+    Monitor --> Fallback
+    Bounds --> Restore
+```
+
+### Performance Monitoring
+```mermaid
+graph LR
+    subgraph Metrics["Performance Metrics"]
+        Latency["Latency"]
+        Memory["Memory Usage"]
+        Cache["Cache Stats"]
+    end
+
+    subgraph Analysis["Performance Analysis"]
+        Profile["Profiler"]
+        Trace["Tracer"]
+        Report["Reporter"]
+    end
+
+    subgraph Optimization["Performance Optimization"]
+        Tune["Auto-tuning"]
+        Scale["Load Scaling"]
+        Adapt["Adaptation"]
+    end
+
+    Latency --> Profile
+    Memory --> Profile
+    Cache --> Profile
+    Profile --> Trace
+    Trace --> Report
+    Report --> Tune
+    Tune --> Scale
+    Scale --> Adapt
 ```
 
 ## Component Dependencies
